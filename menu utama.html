@@ -1,0 +1,530 @@
+<html lang="en">
+
+ <head>
+
+  <meta charset="utf-8"/>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <title>
+
+   Luna Store
+
+  </title>
+
+  <script src="https://cdn.tailwindcss.com">
+
+  </script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+
+  <style>
+
+   body {
+
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+  </style>
+<style>
+
+    body {
+
+        font-family: 'Roboto', sans-serif;
+
+        background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfxYgRmmkOo1Y8cGtcuJFIgt81kCZc7R-HSvErjWb50lqdi_LdJTl1z5sWMytNfmmRvzj0mZBVXBfuwk4GG3S3K8ow75ca51slGK85Zw_qs3YV_eNfatfDKrMddCYgImrHDUv7tcrY8Yrd5ibEvw3i_yS_rkfz9zFBTt5-YganMQTYGpujIR7zcY5NYqg/s896/1000847958.jpg');
+
+        background-size: cover; /* Cover the entire viewport */
+
+        background-position: center; /* Center the image */
+
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+
+    }
+
+</style>
+  <script>
+
+   document.addEventListener('DOMContentLoaded', function () {
+
+            const jokiButton = document.getElementById('jokiButton');
+
+            const jokiMenu = document.getElementById('jokiMenu');
+
+            const populerButton = document.getElementById('populerButton');
+
+            const populerMenu = document.getElementById('populerMenu');
+
+            const populerSection = document.getElementById('populerSection');
+
+            const beliAkunButton = document.getElementById('beliAkunButton');
+
+            const akunMenu = document.getElementById('akunMenu');
+
+            const searchIcon = document.getElementById('searchIcon');
+
+            const searchInput = document.getElementById('searchInput');
+
+            const searchResults = document.getElementById('searchResults');
+
+            jokiButton.addEventListener('click', function () {
+
+                jokiMenu.classList.toggle('hidden');
+
+                populerMenu.classList.add('hidden');
+
+                populerSection.classList.add('hidden');
+
+                akunMenu.classList.add('hidden');
+
+            });
+
+            populerButton.addEventListener('click', function () {
+
+                populerMenu.classList.toggle('hidden');
+
+                jokiMenu.classList.add('hidden');
+
+                populerSection.classList.remove('hidden');
+
+                akunMenu.classList.add('hidden');
+
+            });
+
+            beliAkunButton.addEventListener('click', function () {
+
+                akunMenu.classList.toggle('hidden');
+
+                jokiMenu.classList.add('hidden');
+
+                populerMenu.classList.add('hidden');
+
+                populerSection.classList.add('hidden');
+
+            });
+
+            searchIcon.addEventListener('click', function () {
+
+                searchInput.classList.toggle('hidden');
+
+                searchInput.focus();
+
+            });
+
+            searchInput.addEventListener('input', function () {
+
+                const query = searchInput.value.toLowerCase();
+
+                const items = document.querySelectorAll('.search-item');
+
+                items.forEach(item => {
+
+                    const text = item.textContent.toLowerCase();
+
+                    if (text.includes(query)) {
+
+                        item.classList.remove('hidden');
+
+                    } else {
+
+                        item.classList.add('hidden');
+
+                    }
+
+                });
+
+            });
+
+            // Slider functionality
+
+            let currentSlide = 0;
+
+            const slides = document.querySelectorAll('.slide');
+
+            const totalSlides = slides.length;
+
+            document.getElementById('nextSlide').addEventListener('click', function () {
+
+                slides[currentSlide].classList.add('hidden');
+
+                currentSlide = (currentSlide + 1) % totalSlides;
+
+                slides[currentSlide].classList.remove('hidden');
+
+            });
+
+            document.getElementById('prevSlide').addEventListener('click', function () {
+
+                slides[currentSlide].classList.add('hidden');
+
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+
+                slides[currentSlide].classList.remove('hidden');
+
+            });
+
+        });
+
+  </script>
+
+ </head>
+
+ <body class="bg-white text-gray-800">
+
+  <header class="bg-white shadow-md">
+
+   <div class="container mx-auto flex items-center justify-between p-4">
+
+    <div class="flex items-center">
+
+     <img alt="Luna Store Logo" class="h-10" height="40" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglLH7rCmQQrZ30zt16VTZ6zEuLh8hOTi7-x2qP9GOKLhpKVbuW2mug478R7rOKJ7sG6utaOrGHOPK7UB3zdedNHJwW6cWgED3nrRzkzstONdfhFWprXaq8adj80E73V2wTtrTBOK3xOjBRPPObQAbGQ7Y0hISYpOjr6ufbLhFN1tDydjmrmMRujCE9QzU/s1074/1000847183.jpg" width="40"/>
+
+     <span class="ml-2 text-xl font-bold text-purple-600">
+
+      Luna Store
+
+     </span>
+
+    </div>
+
+    <div class="flex items-center space-x-4">
+
+     <i class="fas fa-search text-xl cursor-pointer" id="searchIcon">
+
+     </i>
+
+     <a href="https://wa.me/6282123154354" target="_blank">
+
+      <i class="fas fa-headset text-xl text-green-500">
+
+      </i>
+
+     </a>
+
+    </div>
+
+   </div>
+
+   <div class="container mx-auto p-4 hidden" id="searchInputContainer">
+
+    <input class="w-full p-2 border border-gray-300 rounded-lg" id="searchInput" placeholder="Search..." type="text"/>
+
+   </div>
+
+  </header>
+
+  <main class="container mx-auto p-4">
+
+   <div class="relative text-white rounded-lg p-4 flex items-center justify-between">
+
+    <div class="slide">
+
+     
+
+     <img alt="Promotion Image 1" class="h-24" height="1448" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnwxQVmI7_FcQzBH0OTg5DpZk2LfjlAEufmUctEAz7a5FLHsPLyjQOKCrH228kVm404SxShgDtThTc1XGkstApZoijGaFE48_lIchne1Jp1NTsdT6dLfPMKQx2S0a2iqQ7g2qAfHCLhfw8y8s-KlPW19-aeVo594y5sDhDgFteSh5ZLVSUSQu7HrbIRKM/s1280/1000848138.png" width="520"/>
+
+    </div>
+
+    <div class="slide hidden">
+
+
+     <img alt="Promotion Image 2" class="h-24" height="1448" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9toA9T2MmS3fCBp_v7oVj7E1yeuYXdjYrOMFJDMLSDR9YEhkHpGupX-RJbns-jkVwOVn5bCpD1rrEB8RD_P9cYjFPSD-L8WWSDHnGC1iZe__5-ImdSG4wInFptvyFxkEszAz7r_20GjRcPfcz-uAd7Q890AmjKBKUDPwjQieVdsmWib7uWRqR-mtrr1Q/s1280/1000848063.png" width="520"/>
+
+    </div>
+
+    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-700 text-white p-2 rounded-full" id="prevSlide">
+
+     <i class="fas fa-chevron-left">
+
+     </i>
+
+    </button>
+
+    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-700 text-white p-2 rounded-full" id="nextSlide">
+
+     <i class="fas fa-chevron-right">
+
+     </i>
+
+    </button>
+
+   </div>
+
+   <div class="flex items-center justify-center space-x-4 mt-4">
+
+    <button class="px-4 py-2 bg-white border border-gray-300 rounded-full flex items-center space-x-2" id="populerButton">
+
+     <i class="fas fa-fire text-red-500">
+
+     </i>
+
+     <span>
+
+      Lagi Populer
+
+     </span>
+
+    </button>
+
+    <button class="px-4 py-2 bg-white border border-gray-300 rounded-full" id="jokiButton">
+
+     Joki
+
+    </button>
+
+    <button class="px-4 py-2 bg-white border border-gray-300 rounded-full" id="beliAkunButton">
+
+     Beli akun
+
+    </button>
+
+   </div>
+
+   <div class="hidden mt-4" id="populerMenu">
+
+    <div class="bg-white rounded-lg shadow-md p-4">
+
+     <p class="text-center font-bold">
+
+      🔥 Lagi Populer
+
+     </p>
+
+    </div>
+
+   </div>
+
+   <div class="hidden mt-4" id="jokiMenu">
+
+    <div class="bg-white rounded-lg shadow-md p-4">
+
+     <p class="text-center font-bold">
+
+      Joki Game
+
+     </p>
+
+     <ul class="mt-2 space-y-2">
+
+      <li class="px-4 py-2 bg-gray-100 rounded-lg">
+
+       <a class="block text-center text-blue-500" href="https://wa.me/6282123154354?text=Min%20mau%20joki%20Guardian%20tales%0A%0Adari%3A%0Asampai%3A%0A%0Arek%20hero%3A%0A%0Adi%20tunggu%20balasanya%20ya%20min%20%F0%9F%98%89" target="_blank">
+
+        Guardian Tales
+
+       </a>
+
+      </li>
+
+      <li class="px-4 py-2 bg-gray-100 rounded-lg">
+
+       <a class="block text-center text-blue-500" href="https://wa.me/6282123154354?text=Min%20mau%20joki%20Blue%20Archive%0A%0Adari%3A%0Asampai%3A%0A%0Arek%20murid%3A%0A%0Adi%20tunggu%20balasanya%20ya%20min%20%F0%9F%98%89" target="_blank">
+
+        Blue Archive
+
+       </a>
+
+      </li>
+
+     </ul>
+
+    </div>
+
+   </div>
+
+   <div class="hidden mt-4" id="akunMenu">
+
+    <div class="bg-white rounded-lg shadow-md p-4">
+
+     <p class="text-center font-bold">
+
+      Akun yang Dijual
+
+     </p>
+
+     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+
+      <div class="bg-gray-100 rounded-lg p-4 text-center">
+
+       <a href="https://www.instagram.com/luunastore.in?igsh=d2ZsNXVwZnF0aGdq" target="_blank">
+
+        <img alt="Akun 1" class="rounded-lg mb-2" height="1020" src="https://storage.googleapis.com/a1aa/image/agPp6ES44ftmiIUa6nMC4AMgW6QZYBYkGMoKbujJd4Y.jpg" width="1020"/>
+
+        <p class="font-bold">
+
+         Akun 1
+
+        </p>
+
+       </a>
+
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-4 text-center">
+
+       <img alt="Akun 2" class="rounded-lg mb-2" height="1020" src="https://storage.googleapis.com/a1aa/image/SLNVtbyozSfWXxtX7d6JxZB80_mx9cm5HXsDE5vfhmY.jpg" width="1020"/>
+
+       <p class="font-bold">
+
+        Akun 2
+
+       </p>
+
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-4 text-center">
+
+       <img alt="Akun 3" class="rounded-lg mb-2" height="1020" src="https://storage.googleapis.com/a1aa/image/qkJxxAXV1y3KEgZ16vQIGvF9Lumrb7bPwh3DKK4BHr0.jpg" width="1020"/>
+
+       <p class="font-bold">
+
+        Akun 3
+
+       </p>
+
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-4 text-center">
+
+       <img alt="Akun 4" class="rounded-lg mb-2" height="1020" src="https://storage.googleapis.com/a1aa/image/A40UH2bYluqL6OqYsTF1u8CUk-_Xr3ec7a_rMlJVgK0.jpg" width="1020"/>
+
+       <p class="font-bold">
+
+        Akun 4
+
+       </p>
+
+      </div>
+
+     </div>
+
+    </div>
+
+   </div>
+
+   <div id="populerSection">
+
+    <h2 class="text-xl font-bold mt-6 flex items-center">
+
+     <i class="fas fa-fire text-red-500 mr-2">
+
+     </i>
+
+     Lagi Populer
+
+    </h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4" id="searchResults">
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <a href="https://brandluna.blogspot.com/2025/03/blog-post.html" target="_blank">
+
+       <img alt="Mobile Legends" class="rounded-lg mb-2" height="850" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgbPtOmLXhCHbU8d192eejuzrItdce7fozjhkY9za0Zo2527PNgYSfujIVd6NI-McIP6Myy_acr76I7s_AzUwGYGwEV-p5j1XmJ1c6bRGR7RysH0MWb1FTMoM9U4kyG22WBRBBD75c_bw-gDKVhEufWXDHFRYk14Xa6tH2mCDsB6VnLtIuseK9enal_SQ/s1024/1000848147.jpg" width="850"/>
+
+       <p class="text-center">
+
+        Mobile Legends
+
+       </p>
+
+      </a>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Bigo Live" class="rounded-lg mb-2" height="850" src="https://storage.googleapis.com/a1aa/image/ZEodPjFHuRWBY1GHIGnLz4e1IGk1-kKbnE8YGkxIpTw.jpg" width="850"/>
+
+      <p class="text-center">
+
+       Bigo Live
+
+      </p>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Free Fire" class="rounded-lg mb-2" height="850" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjofwG1vItXjzaZ-l0WfJMJ2aPPUx2IPY3BtzbrN6AtmfxrFfl5dBnuva9QUBD1jreGcxC2vWNp8agTGD_jguuB0K2LMjWQr-EGNMnQRCEo6aS19jHI2ATw_rqiupDFmEGyznltZjk-jy-dolJB4D9tP4RU8Xq6LGTjiBNp2xnnNl6TtFgEn9qGL2AHNvw/s1024/1000848155.jpg" width="850"/>
+
+      <p class="text-center">
+
+       Free Fire
+
+      </p>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Monster Hunter Wilds" class="rounded-lg mb-2" height="100" src="https://storage.googleapis.com/a1aa/image/sqjIXgemBP49Ndvp3BxC5iOH05WfEZyiCIQ_yVYCAo4.jpg" width="100"/>
+
+      <p class="text-center">
+
+       Monster Hunter Wilds Steam CD Keys (instant)
+
+      </p>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Honor of Kings" class="rounded-lg mb-2" height="100" src="https://storage.googleapis.com/a1aa/image/-2azHgoGDNeLZw6CYk6Wf7QBWOTgdfY_Sbx4DFXRn8E.jpg" width="100"/>
+
+      <p class="text-center">
+
+       Honor of Kings
+
+      </p>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Genshin Impact" class="rounded-lg mb-2" height="100" src="https://storage.googleapis.com/a1aa/image/qn78d5KHYuUNPrmjEa3XRR__AELKzhh64R1VvBREJsA.jpg" width="100"/>
+
+      <p class="text-center">
+
+       Genshin Impact
+
+      </p>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Game 7" class="rounded-lg mb-2" height="100" src="https://storage.googleapis.com/a1aa/image/2r9zu7xWTL-OpGQZuJKFjGruoxv5LL7HyeszPbGOupQ.jpg" width="100"/>
+
+      <p class="text-center">
+
+       Game 7
+
+      </p>
+
+     </div>
+
+     <div class="bg-white rounded-lg shadow-md p-4 search-item">
+
+      <img alt="Starrail" class="rounded-lg mb-2" height="100" src="https://storage.googleapis.com/a1aa/image/dQRjOUSsL2RoUgGD_Z6F4Q6fXT9i6sJsk5vZvKeiuRI.jpg" width="100"/>
+
+      <p class="text-center">
+
+       Starrail
+
+      </p>
+
+     </div>
+
+    </div>
+
+   </div>
+
+  </main>
+
+ </body>
+
+</html>

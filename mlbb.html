@@ -1,0 +1,615 @@
+<html lang="en">
+
+ <head>
+
+  <meta charset="utf-8"/>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <title>
+
+   Mobile Legends Top-Up
+
+  </title>
+
+  <script src="https://cdn.tailwindcss.com">
+
+  </script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap" rel="stylesheet"/>
+
+  <style>
+
+   .font-lexend {
+
+    font-family: 'Lexend Peta', sans-serif;
+
+   }
+
+  </style>
+
+  <script>
+
+   function toggleGuide() {
+
+    var guideText = document.getElementById("guideText");
+
+    if (guideText.style.display === "none") {
+
+     guideText.style.display = "block";
+
+    } else {
+
+     guideText.style.display = "none";
+
+    }
+
+   }
+
+   function selectDenom(element) {
+
+    var selected = document.querySelectorAll(".denom-item");
+
+    selected.forEach(function(item) {
+
+     item.classList.remove("border-purple-500");
+
+     item.classList.add("border-gray-300");
+
+    });
+
+    element.classList.remove("border-gray-300");
+
+    element.classList.add("border-purple-500");
+
+    document.getElementById("selectedDenom").value = element.querySelector("p").innerText;
+
+   }
+
+   function selectPayment(element) {
+
+    var selected = document.querySelectorAll(".payment-method");
+
+    selected.forEach(function(item) {
+
+     item.classList.remove("border-purple-500");
+
+     item.classList.add("border-gray-300");
+
+    });
+
+    element.classList.remove("border-gray-300");
+
+    element.classList.add("border-purple-500");
+
+    document.getElementById("selectedPayment").value = element.querySelector("p").innerText;
+
+   }
+
+   function showConfirmation() {
+
+    var userId = document.getElementById("userId").value;
+
+    var serverId = document.getElementById("serverId").value;
+
+    var selectedDenom = document.getElementById("selectedDenom").value;
+
+    var selectedPayment = document.getElementById("selectedPayment").value;
+
+    if (userId === "" || serverId === "" || selectedDenom === "" || selectedPayment === "") {
+
+     alert("Anda harus mengisi semua bagian.");
+
+     return;
+
+    }
+
+    var confirmationModal = document.getElementById("confirmationModal");
+
+    confirmationModal.style.display = "flex";
+
+   }
+
+   function closeConfirmation() {
+
+    var confirmationModal = document.getElementById("confirmationModal");
+
+    confirmationModal.style.display = "none";
+
+   }
+
+   function launchWhatsApp() {
+
+    var userId = document.getElementById("userId").value;
+
+    var serverId = document.getElementById("serverId").value;
+
+    var selectedDenom = document.getElementById("selectedDenom").value;
+
+    var selectedPayment = document.getElementById("selectedPayment").value;
+
+    var message = `Top Up DM MLBB\n\nUser ID: ${userId}\nServer ID: ${serverId}\nDenom: ${selectedDenom}\nMetode Pembayaran: ${selectedPayment}`;
+
+    var phoneNumber = "+6282123154354";
+
+    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+
+   }
+
+  </script>
+
+ </head>
+
+ <body class="bg-blue-900">
+
+  <div class="max-w-screen-lg mx-auto p-4">
+
+   <!-- Header -->
+
+   <div class="flex items-center justify-between py-4">
+
+    <div class="flex items-center">
+
+     <img alt="Luna Store Logo" class="h-12" height="50" src="https://storage.googleapis.com/a1aa/image/5YCVDiaEUFvOfqiRW9Ktf-YZyh-fT2phvPqSD8tdM6c.jpg" width="100"/>
+
+     <span class="ml-2 text-xl font-bold text-purple-600 font-lexend">
+
+      Luna Store
+
+     </span>
+
+    </div>
+
+   </div>
+
+   <!-- Game Info -->
+
+   <div class="bg-white p-4 rounded-lg shadow-md">
+
+    <div class="flex items-center">
+
+     <img alt="Mobile Legends Game Icon" class="h-20 w-20 rounded-lg" height="80" src="https://storage.googleapis.com/a1aa/image/D4r5fs53O948pKnHMyWQA-3UGjYUGZZSo5_8C5dScRA.jpg" width="80"/>
+
+     <div class="ml-4">
+
+      <h1 class="text-xl font-bold">
+
+       Mobile Legends: Bang Bang ID
+
+      </h1>
+
+      <p class="text-gray-500">
+
+       INSTANT TOP-UP
+
+      </p>
+
+     </div>
+
+    </div>
+
+   </div>
+
+   <!-- Step 1 -->
+
+   <div class="bg-white p-4 mt-4 rounded-lg shadow-md">
+
+    <div class="flex items-center mb-4">
+
+     <div class="bg-purple-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">
+
+      1
+
+     </div>
+
+     <h2 class="ml-2 text-lg font-bold">
+
+      MASUKKAN ID DAN SERVER ANDA
+
+     </h2>
+
+    </div>
+
+    <div class="flex space-x-2">
+
+     <input class="w-full p-2 border rounded-lg" id="userId" placeholder="User ID" type="text"/>
+
+     <input class="w-full p-2 border rounded-lg" id="serverId" placeholder="Server ID" type="text"/>
+
+    </div>
+
+    <p class="text-gray-500 mt-2">
+
+     Untuk menemukan ID dan Server Anda, silahkan buka menu Profil di pojok kiri atas. Khusus untuk ID Region Indonesia.
+
+    </p>
+
+    <div class="text-center mt-4">
+
+     <button class="bg-purple-500 text-white px-4 py-2 rounded-lg" onclick="toggleGuide()">
+
+      Lihat Panduan
+
+     </button>
+
+    </div>
+
+    <p class="text-gray-500 mt-2" id="guideText" style="display: none;">
+
+     Panduan: Untuk menemukan ID dan Server Anda, silahkan buka menu Profil di pojok kiri atas. Khusus untuk ID Region Indonesia.
+
+    </p>
+
+   </div>
+
+   <!-- Step 2 -->
+
+   <div class="bg-white p-4 mt-4 rounded-lg shadow-md">
+
+    <div class="flex items-center mb-4">
+
+     <div class="bg-purple-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">
+
+      2
+
+     </div>
+
+     <h2 class="ml-2 text-lg font-bold">
+
+      PILIH JUMLAH DENOM
+
+     </h2>
+
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+
+     <!-- Denom Items -->
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       Weekly Diamond Pass
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 28.356
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       Weekly Diamond Pass x2
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 56.100
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       Weekly Diamond Pass x3
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 82.110
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       Weekly Diamond Pass x4
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 113.800
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       Weekly Diamond Pass x5
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 142.255
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       Twilight Pass
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 153.395
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       3 Diamonds
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 1.224
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center denom-item border-gray-300" onclick="selectDenom(this)">
+
+      <p>
+
+       5 Diamonds
+
+      </p>
+
+      <p class="text-gray-500">
+
+       dari
+
+      </p>
+
+      <p class="text-purple-500 font-bold">
+
+       IDR 1.530
+
+      </p>
+
+      <i class="fas fa-gem text-gray-400">
+
+      </i>
+
+     </div>
+
+    </div>
+
+    <input id="selectedDenom" type="hidden"/>
+
+   </div>
+
+   <!-- Step 3 -->
+
+   <div class="bg-white p-4 mt-4 rounded-lg shadow-md">
+
+    <div class="flex items-center mb-4">
+
+     <div class="bg-purple-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">
+
+      3
+
+     </div>
+
+     <h2 class="ml-2 text-lg font-bold">
+
+      PILIH METODE PEMBAYARAN
+
+     </h2>
+
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+
+     <!-- Payment Methods -->
+
+     <div class="border p-4 rounded-lg text-center payment-method border-gray-300" onclick="selectPayment(this)">
+
+      <img alt="DANA Logo" class="h-12 mx-auto mb-2" height="50" src="https://storage.googleapis.com/a1aa/image/8kZlhZn9lZ-wWONYi8lhHR4iOxeEh3HWQ-kUGd0EqZY.jpg" width="100"/>
+
+      <p class="text-gray-500">
+
+       DANA
+
+      </p>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center payment-method border-gray-300" onclick="selectPayment(this)">
+
+      <img alt="OVO Logo" class="h-12 mx-auto mb-2" height="50" src="https://storage.googleapis.com/a1aa/image/6lQCY0vmCV2ad6VPlg07eB0wPzprpfpEFFgptjitoIg.jpg" width="100"/>
+
+      <p class="text-gray-500">
+
+       OVO
+
+      </p>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center payment-method border-gray-300" onclick="selectPayment(this)">
+
+      <img alt="GoPay Logo" class="h-12 mx-auto mb-2" height="50" src="https://storage.googleapis.com/a1aa/image/xOGCUws5a2FzvpxobxHvir6OqOufzB1e9GBH2UBfVTM.jpg" width="100"/>
+
+      <p class="text-gray-500">
+
+       GoPay
+
+      </p>
+
+     </div>
+
+     <div class="border p-4 rounded-lg text-center payment-method border-gray-300" onclick="selectPayment(this)">
+
+      <img alt="QRIS Logo" class="h-12 mx-auto mb-2" height="50" src="https://storage.googleapis.com/a1aa/image/pT3f-KyKA_1LQ2kOZDfcffuf9gE2G2eAtrRVDVFjVyA.jpg" width="100"/>
+
+      <p class="text-gray-500">
+
+       QRIS
+
+      </p>
+
+     </div>
+
+    </div>
+
+    <input id="selectedPayment" type="hidden"/>
+
+   </div>
+
+   <!-- Confirm Button -->
+
+   <div class="text-center mt-4">
+
+    <button class="bg-green-500 text-white px-4 py-2 rounded-lg" onclick="showConfirmation()">
+
+     Konfirmasi
+
+    </button>
+
+   </div>
+
+  </div>
+
+  <!-- Confirmation Modal -->
+
+  <div class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center" id="confirmationModal" style="display: none;">
+
+   <div class="bg-white p-6 rounded-lg shadow-lg text-center relative">
+
+    <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700" onclick="closeConfirmation()">
+
+     <i class="fas fa-times text-2xl">
+
+     </i>
+
+    </button>
+
+    <i class="fas fa-exclamation-circle text-purple-500 text-4xl mb-4">
+
+    </i>
+
+    <p class="text-lg font-bold mb-4">
+
+     Konfirmasi! Top up MLBB masukan hasil dari ID sampai metode pembayaran
+
+    </p>
+
+    <button class="bg-green-500 text-white px-4 py-2 rounded-lg" onclick="launchWhatsApp()">
+
+     Gas Beli
+
+    </button>
+
+   </div>
+
+  </div>
+
+ </body>
+
+</html>
